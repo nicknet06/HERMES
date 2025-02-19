@@ -1,0 +1,30 @@
+.info-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-links {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.nav-links a {
+    background-color: #dc3545;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}

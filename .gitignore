@@ -1,0 +1,22 @@
+# Ignore MySQL socket file
+mysql_data/mysql.sock
+
+# Optionally ignore other MySQL data files that might cause issues
+mysql_data/auto.cnf
+mysql_data/binlog.index
+mysql_data/ib_buffer_pool
+
+# Ignore local SQLite database file
+
+
+# Ignore Docker Compose configuration if you don't want to track changes
+
+# Ignore environment files
+*.env
+
+# Python cache directories and compiled files
+__pycache__/
+*.pyc
+
+# Ignore virtual environment directory if located inside the project
+.venv/

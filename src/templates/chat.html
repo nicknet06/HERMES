@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Emergency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='chat.css') }}">
+    <script src="{{ url_for('static', filename='notifications.js') }}"></script>
+
+
+
+</head>
+<body>
+    <div class="container">
+        <h1><span class="emergency-pulse"></span>Report Emergency</h1>
+        <div class="current-time">
+            Current Time (UTC): {{ current_time }}<br>
+            User: {{ current_user }}
+        </div>
+        <div class="chat-box">
+            <form method="POST" action="/chat" id="emergencyForm">
+                <div class="form-group optional">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name (optional)">
+                </div>
+                <div class="form-group optional">
+                    <label for="contact">Contact Number:</label>
+                    <input type="text" id="contact" name="contact" placeholder="Enter your contact number (optional)">
+                </div>
+                <div class="form-group">
+                    <label for="coordinates">Your Location:</label>
+                    <div id="coordinates-display" class="coordinates-display">Requesting location...</div>
+                    <input type="hidden" id="latitude" name="latitude" required>
+                    <input type="hidden" id="longitude" name="longitude" required>
+                    <p id="locationStatus" class="location-status"></p>
+                </div>
+
+                <div class="input-methods">
+                    <button type="button" class="method-btn active" data-method="text">
+                        <i class="fas fa-keyboard"></i> Text Description
+                    </button>
+                    <button type="button" class="method-btn" data-method="voice">
+                        <i class="fas fa-microphone"></i> Voice Description
+                    </button>
+                </div>
+
+                <div class="input-section active" id="textInput">
+                    <div class="form-group">
+                        <label for="description">Emergency Description:</label>
+                        <textarea id="description" name="description" required
+                                  placeholder="Please describe your emergency situation in detail..."></textarea>
+                    </div>
+                </div>
+
+                <div class="input-section" id="voiceInput">
+                    <button type="button" id="recordButton" class="record-btn">
+                        <i class="fas fa-microphone"></i> Start Recording
+                    </button>
+                    <div class="timer" id="timer">00:00</div>
+                    <audio id="audioPreview" class="audio-preview" controls style="display: none;"></audio>
+                    <input type="hidden" name="audio_filename" id="audioFilename">
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                    Submit Emergency Report
+                </button>
+            </form>
+        </div>
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="response-message">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='js/location.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/voice.js') }}"></script>
+    <script>
+document.getElementById('emergencyForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (isRecording) {
+        await stopRecording();
+    }
+
+    const formData = new FormData(e.target);
+
+    try {
+        const response = await fetch('/chat', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            showEmergencyResponse({
+                location: data.location,
+                eta: data.eta,
+                duration: data.duration // Server-provided duration in milliseconds
+            });
+            e.target.reset();
+            if (audioPreview) {
+                audioPreview.style.display = 'none';
+            }
+        } else {
+            throw new Error(data.error || 'Failed to submit emergency report');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        notificationManager.showNotification('Error', {
+            body: 'Failed to submit emergency report. Please try again.',
+            duration: 5000
+        });
+    }
+});
+</script>
+</body>
+</html>

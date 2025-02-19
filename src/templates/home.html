@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Response System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1>Emergency Response System</h1>
+                <div class="user-info">
+                    <span>{{ current_time }}</span>
+                    <span>User: {{ current_user }}</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="emergency-actions">
+                <h2>Emergency Actions</h2>
+                <a href="{{ url_for('chat') }}" class="button emergency-button">Report Emergency</a>
+            </section>
+
+            <section class="system-status">
+                <h2>System Status</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <h3>Active Services</h3>
+                        <p id="active-services">Loading...</p>
+                    </div>
+                    <div class="status-item">
+                        <h3>Recent Reports</h3>
+                        <p id="recent-reports">Loading...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Emergency Response System</p>
+    </footer>
+
+    <script>
+        // Fetch statistics when the page loads
+        fetch('/api/statistics')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('active-services').textContent = data.active_services;
+                document.getElementById('recent-reports').textContent = data.recent_reports;
+            })
+            .catch(error => console.error('Error fetching statistics:', error));
+    </script>
+</body>
+</html>

@@ -1,0 +1,1008 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f6f8;
+}
+
+/* Admin container */
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header styles */
+.admin-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-info {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+}
+
+/* Main content area */
+.admin-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+/* Map section */
+.map-section {
+    flex: 2;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+}
+
+/* Controls section */
+.controls-section {
+    flex: 1;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem;
+}
+
+.controls-container {
+    height: 100%;
+}
+
+.control-panel {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    padding: 1rem;
+    height: 100%;
+}
+
+.control-panel h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.control-group label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.control-group select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 1rem;
+}
+
+.control-group select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+/* Add these styles to your existing admin.css */
+
+.service-filters {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.service-filters h3 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.checkbox-icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+
+.checkbox-icon.hospital {
+    background-image: url('/images/hospital-icon.png');
+}
+
+.checkbox-icon.police {
+    background-image: url('/images/police-icon.png');
+}
+
+.checkbox-icon.fire {
+    background-image: url('/images/fire-icon.png');
+}
+/* Base styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    text-align: right;
+}
+
+/* Dashboard layout */
+.dashboard-container {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+.map-container {
+    flex: 2;
+    height: 100%;
+}
+
+#services-map {
+    height: 100%;
+    width: 100%;
+}
+
+/* Resources panel */
+.resources-panel {
+    flex: 1;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    overflow-y: auto;
+    display: none;  /* Hidden by default */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+}
+
+.resource-section {
+    margin-bottom: 2rem;
+}
+
+.resource-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.resource-item {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.resource-item h4 {
+    margin: 0 0 0.5rem 0;
+}
+
+.resource-item p {
+    margin: 0.25rem 0;
+}
+
+/* Status colors */
+.resource-item.available {
+    border-left: 4px solid #2ecc71;
+}
+
+.resource-item.unavailable {
+    border-left: 4px solid #e74c3c;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .map-container {
+        height: 50vh;
+    }
+
+    .resources-panel {
+        height: 50vh;
+    }
+}
+/* Add these styles to your existing admin.css */
+
+/* Resource Panel Styles */
+.resource-group {
+    margin-bottom: 20px;
+}
+
+.resource-group h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resource-items {
+    display: grid;
+    gap: 10px;
+}
+
+.resource-item {
+    background: white;
+    border-radius: 4px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-left: 4px solid #ccc;
+}
+
+.resource-item.available {
+    border-left-color: #2ecc71;
+}
+
+.resource-item.unavailable {
+    border-left-color: #e74c3c;
+}
+
+.resource-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.resource-name {
+    font-weight: bold;
+}
+
+.resource-status {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    background: #f0f0f0;
+}
+
+.resource-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.service-header {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    background: #f8f9fa;
+    border-left: 4px solid #2c3e50;
+}
+
+.service-header.hospital { border-left-color: #2ecc71; }
+.service-header.police { border-left-color: #3498db; }
+.service-header.fire { border-left-color: #e74c3c; }
+
+.service-header h2 {
+    margin: 0 0 8px 0;
+}
+
+.service-type {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #2c3e50;
+    color: white;
+    font-size: 0.9em;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #2c3e50;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    font-size: 0.9em;
+}
+
+.back-button:hover {
+    color: #34495e;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+/* Add these styles to your existing admin.css */
+
+/* Resource Panel Styles */
+#resources-panel {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.resource-group {
+    margin-bottom: 15px;
+}
+
+.resource-group h4 {
+    margin: 10px 0;
+    color: #2c3e50;
+}
+
+.resource-items {
+    display: grid;
+    gap: 8px;
+}
+
+.resource-item {
+    background: white;
+    border-radius: 4px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.9em;
+}
+
+.resource-item.available {
+    border-left: 3px solid #2ecc71;
+}
+
+.resource-item.unavailable {
+    border-left: 3px solid #e74c3c;
+}
+
+.resource-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.service-header {
+    background: #f8f9fa;
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+/* Loading styles */
+.loading-indicator {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Resource panel styles */
+#resources-panel {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.resource-item {
+    background: #f8f9fa;
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-left: 4px solid #ccc;
+}
+
+.resource-item.available {
+    border-left-color: #2ecc71;
+}
+
+.resource-item.unavailable {
+    border-left-color: #e74c3c;
+}
+
+.resource-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.service-header {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.service-header.hospital { border-left: 4px solid #2ecc71; }
+.service-header.police { border-left: 4px solid #3498db; }
+.service-header.fire { border-left: 4px solid #e74c3c; }
+
+.no-data {
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    padding: 10px;
+}
+
+.error-message {
+    color: #e74c3c;
+    text-align: center;
+    padding: 20px;
+}
+
+.retry-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.retry-btn:hover {
+    background: #2980b9;
+}
+
+.view-resources-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-top: 8px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.view-resources-btn:hover {
+    background: #2980b9;
+}
+
+/* Loading overlay */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Error toast */
+.error-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #e74c3c;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.service-header h4 {
+    margin: 0 0 4px 0;
+}
+
+.service-type {
+    font-size: 0.9em;
+    color: #666;
+}
+/* Panel header and close button styles */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.close-resources-btn {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    line-height: 1;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.close-resources-btn:hover {
+    background-color: #f0f0f0;
+    color: #e74c3c;
+}
+
+.close-icon {
+    display: block;
+    line-height: 0;
+    margin-top: -2px;
+}
+
+/* Adjust the service header to work with the new panel header */
+.service-header {
+    flex: 1;
+    margin-right: 16px;
+    margin-bottom: 0;
+}
+/* Incident specific styles */
+.incident-item {
+    border-left: 4px solid #666;
+    margin-bottom: 10px;
+    padding: 12px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.incident-item.critical {
+    border-left-color: #dc3545;
+}
+
+.incident-item.moderate {
+    border-left-color: #ffc107;
+}
+
+.incident-item.low {
+    border-left-color: #17a2b8;
+}
+
+.incident-time {
+    color: #666;
+    font-size: 0.9em;
+}
+
+.incident-severity {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.incident-severity.critical {
+    background-color: #dc3545;
+    color: white;
+}
+
+.incident-severity.moderate {
+    background-color: #ffc107;
+    color: black;
+}
+
+.incident-severity.low {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.incident-description {
+    margin: 8px 0;
+    font-size: 0.95em;
+}
+
+.incident-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 8px;
+}
+
+.incident-location {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 4px;
+}
+
+.resource-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Add these new styles for the additional incident details */
+.incident-services,
+.incident-specialties,
+.incident-equipment {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 4px;
+    padding: 2px 0;
+}
+
+.incident-severity.critical {
+    background-color: #dc3545;
+}
+
+.incident-severity.moderate {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.incident-severity.low {
+    background-color: #17a2b8;
+}
+
+.incident-id {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.resource-item.incident-item {
+    margin-bottom: 12px;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.incident-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #eee;
+}
+
+/* Style for required items lists */
+.incident-services,
+.incident-specialties,
+.incident-equipment {
+    background-color: #f8f9fa;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+/* Add these styles for assessment and response sections */
+.incident-assessment,
+.incident-response {
+    margin-top: 12px;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.incident-assessment h5,
+.incident-response h5 {
+    margin: 0 0 4px 0;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #495057;
+}
+
+.incident-assessment p,
+.incident-response p {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: #212529;
+}
+
+.incident-response {
+    border-left: 3px solid #28a745;
+}
+
+.incident-assessment {
+    border-left: 3px solid #17a2b8;
+}
+/* Incident map markers and popups */
+.incident-popup {
+    padding: 10px;
+    min-width: 200px;
+}
+
+.incident-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.incident-popup .incident-severity {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+
+.incident-popup .incident-severity.critical {
+    background-color: #dc3545;
+    color: white;
+}
+
+.incident-popup .incident-severity.moderate {
+    background-color: #ffc107;
+    color: black;
+}
+
+.incident-popup .incident-severity.low {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.incident-popup-body {
+    margin-bottom: 8px;
+}
+
+.incident-popup-body p {
+    margin: 0 0 4px 0;
+    font-size: 0.9em;
+}
+
+.required-services {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.incident-popup-footer {
+    text-align: right;
+}
+
+.details-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.details-btn:hover {
+    background-color: #0056b3;
+}
+
+.incident-time {
+    color: #666;
+    font-size: 0.9em;
+}
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 0;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-modal {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+.modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Incident Detail Styles */
+.incident-detail-container {
+    padding: 15px;
+}
+
+.incident-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.incident-detail-header.critical {
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+.incident-detail-header.moderate {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+.incident-detail-header.low {
+    background-color: rgba(23, 162, 184, 0.1);
+}
+
+.incident-basic-info {
+    display: flex;
+    gap: 15px;
+}
+
+.incident-id-badge,
+.incident-time-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    font-size: 0.9em;
+}
+
+.incident-detail-section {
+    margin-bottom: 20px;
+}
+
+.incident-detail-section h3 {
+    margin-bottom: 8px;
+    color: #495057;
+    font-size: 1.1em;
+}
+
+.coordinates {
+    display: flex;
+    gap: 15px;
+    color: #6c757d;
+    font-size: 0.9em;
+}
+
+.resource-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.resource-tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.service-tag {
+    background-color: #e7f5ff;
+    color: #1971c2;
+}
+
+.specialty-tag {
+    background-color: #f3f0ff;
+    color: #5f3dc4;
+}
+
+.equipment-tag {
+    background-color: #fff9db;
+    color: #e67700;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.status-badge.genuine {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-badge.under-review {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.incident-resources {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.resource-section {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+}

@@ -1,0 +1,46 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:5000"
+    volumes:
+      - ./src:/app
+      - ./src/static:/app/static
+      - ./src/templates:/app/templates
+      - emergency_uploads:/app/audio_uploads
+      - ./data:/data
+    restart: unless-stopped
+    environment:
+      - FLASK_ENV=production
+      - FLASK_APP=app.py
+      - FLASK_SECRET_KEY=your-secure-secret-key
+      - SQLALCHEMY_DATABASE_URI=sqlite:///data/db.sqlite3
+      - CURRENT_USER=nicknet06
+      - CURRENT_TIME=2025-02-16 22:42:38
+      - TZ=UTC
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/debug/db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    command: >
+      sh -c "
+        mkdir -p /data &&
+        mkdir -p /app/audio_uploads &&
+        mkdir -p /app/static &&
+        mkdir -p /app/templates &&
+        chown -R nobody:nobody /data /app/audio_uploads &&
+        python3 app.py
+      "
+
+volumes:
+  emergency_uploads:
+    driver: local
+
+networks:
+  default:
+    name: cms_network
+    driver: bridge

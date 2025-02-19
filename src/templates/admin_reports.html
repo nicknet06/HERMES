@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Reports Admin</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Emergency Reports</h1>
+        <p>Current Time: {{ current_time }}</p>
+        <p>User: {{ current_user }}</p>
+
+        <table class="reports-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Audio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in reports %}
+                <tr>
+                    <td>{{ report.id }}</td>
+                    <td>{{ report.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    <td>{{ report.name }}</td>
+                    <td>{{ report.contact }}</td>
+                    <td>
+                        {% if report.latitude and report.longitude %}
+                        ({{ report.latitude }}, {{ report.longitude }})
+                        {% else %}
+                        Location pending
+                        {% endif %}
+                    </td>
+                    <td>{{ report.description }}</td>
+                    <td>
+                        {% if report.audio_filename %}
+                        <audio controls>
+                            <source src="/uploads/{{ report.audio_filename }}" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
+                        {% else %}
+                        No audio
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
