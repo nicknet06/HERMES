@@ -42,7 +42,7 @@ The Crisis Management System is a web-based emergency response platform designed
   - python app.py
 
 ### 5.ENJOY
-- **localhost**
+- **http://localhost**
 - **http://localhost/chat**:
 - **http://localhost/admin/dashboard**:
 
